@@ -116,30 +116,30 @@
                                 .replace(':boxId', data.id);
 
                             return `<div class="dropdown d-flex">
-                <button class="btn btn-link text-black p-0" type="button" id="dropdownMenuButton${data.id}" data-bs-toggle="dropdown" aria-expanded="false">
-                    <x-heroicon-o-ellipsis-horizontal class="hero-icon" />
-                </button>
-                <x-dropdown-menu class="dropdown-menu-end" aria-labelledby="dropdownMenuButton${data.id}">
-                    <x-dropdown-item href="${editUrl}">
-                        <x-heroicon-o-pencil class="hero-icon-sm me-2 text-gray-400" />
-                        @lang('Edit')
-                    </x-dropdown-item>
-                    <x-dropdown-item href="#" onclick="confirmDeliverBox('${data.id}', '${deliverUrl}')">
-                        <x-heroicon-o-truck class="hero-icon-sm me-2 text-gray-400" />
-                        @lang('Deliver Box')
-                    </x-dropdown-item>
-                    <x-dropdown-item href="#">
-                        <form action="${deleteUrl}" method="POST" id="form-${data.id}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="button" class="btn btn-link p-0 m-0 w-100 text-start text-decoration-none text-danger align-items-center btn-sm" onclick="submitDeleteForm('${data.id}')">
-                                <x-heroicon-o-trash class="hero-icon-sm me-2 text-gray-400" />
-                                @lang('Delete')
-                            </button>
-                        </form>
-                    </x-dropdown-item>
-                </x-dropdown-menu>
-            </div>`;
+                    <button class="btn btn-link text-black p-0" type="button" id="dropdownMenuButton${data.id}" data-bs-toggle="dropdown" aria-expanded="false">
+                        <x-heroicon-o-ellipsis-horizontal class="hero-icon" />
+                    </button>
+                    <x-dropdown-menu class="dropdown-menu-end" aria-labelledby="dropdownMenuButton${data.id}">
+                        <x-dropdown-item href="${editUrl}">
+                            <x-heroicon-o-pencil class="hero-icon-sm me-2 text-gray-400" />
+                            @lang('Edit')
+                        </x-dropdown-item>
+                        <x-dropdown-item href="#" onclick="confirmDeliverBox('${data.id}', '${deliverUrl}')">
+                            <x-heroicon-o-truck class="hero-icon-sm me-2 text-gray-400" />
+                            @lang('Deliver Box')
+                        </x-dropdown-item>
+                        <x-dropdown-item href="#">
+                            <form action="${deleteUrl}" method="POST" id="form-${data.id}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="btn btn-link p-0 m-0 w-100 text-start text-decoration-none text-danger align-items-center btn-sm" onclick="submitDeleteForm('${data.id}')">
+                                    <x-heroicon-o-trash class="hero-icon-sm me-2 text-gray-400" />
+                                    @lang('Delete')
+                                </button>
+                            </form>
+                        </x-dropdown-item>
+                    </x-dropdown-menu>
+                </div>`;
                         }
                     }
 
@@ -164,7 +164,7 @@
                             console.log(data);
                             $('#customer_id').html('<option value="">@lang("Select a Customer")</option>');
                             $.each(data, function (index, customer) {
-                                $('#customer_id').append(`<option value="${customer.id}">${customer.name} (${customer.phone})</option>`);
+                                $('#customer_id').append(`<option value="${customer.id}">${customer.name} (${customer.mobile})</option>`);
                             });
                         }
                     });
@@ -177,10 +177,13 @@
 
 
         function confirmDeliverBox(boxId, deliverUrl) {
+            console.log("Delivering Box ID:", boxId);
+            console.log("Deliver URL:", deliverUrl);
+
             Swal.fire({
                 title: "@lang('Confirm Delivery?')",
                 text: "@lang('Are you sure you want to mark this box as delivered?')",
-                icon: "warning",
+                icon: "info",
                 showCancelButton: true,
                 confirmButtonColor: "#28a745",
                 cancelButtonColor: "#d33",
@@ -190,21 +193,19 @@
                     $.ajax({
                         url: deliverUrl,
                         type: "POST",
-                        data: {
-                            _token: "{{ csrf_token() }}"
-                        },
+                        data: { _token: "{{ csrf_token() }}" },
                         success: function (response) {
-                            Swal.fire("@lang('Success!')", response.message, "success");
+                            Swal.fire("@lang('Success!')", "@lang('The box has been marked as delivered.')", "success");
                             $('#box-table').DataTable().ajax.reload();
                         },
-                        error: function (error) {
-                            Swal.fire("@lang('Error!')", "@lang('Something went wrong, please try again.')", "error");
+                        error: function (xhr) {
+                            console.error(xhr);
+                            Swal.fire("@lang('Error!')", xhr.responseJSON?.message || "@lang('Something went wrong, please try again.')", "error");
                         }
                     });
                 }
             });
         }
-
 
     </script>
 @endpush

@@ -37,7 +37,8 @@ Route::get('v1/deliveries', [\App\Http\Controllers\API\V1\CategoryController::cl
 Route::get('shipments', [\App\Http\Controllers\API\V1\ShipmentController::class, 'index'])->name('api.shipments.index');
 Route::get('v1/shipments', [\App\Http\Controllers\API\V1\ShipmentController::class, 'show'])->name('api.shipments.show');
 Route::get('/shipments/{shipment}/boxes', [ShipmentBoxController::class, 'getBoxes'])->name('api.shipments.boxes.index');
+Route::get('/shipments/{shipment}/delivered-boxes', [ShipmentBoxController::class, 'getDBoxes'])
+    ->name('api.d-shipments.boxes.index');
 Route::get('/shipments/boxes', [ShipmentBoxController::class, 'getAllBoxes'])->name('api.boxes.index');
 Route::get('/customers/byShipment', [ShipmentController::class, 'getCustomersByShipment'])->name('api.customers.byShipment');
 
-  

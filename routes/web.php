@@ -251,6 +251,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/store', [SupplyController::class, 'store'])->name('supply.store'); // Process Supply Submission
     });
 
+    // Route::get('/', [SupplyController::class, 'index'])->name('supply.index'); // Show Supply Page
+    // Route::get('/shipments/{shipment}/boxes/delivered', [ShipmentBoxController::class, 'deliveredBoxesIndex'])
+    // ->name('shipments.delivered-boxes.index');
 
     // Route::post('/shipments/{shipment}/boxes/deliver', [ShipmentBoxController::class, 'bulkDeliver'])
     //     ->name('shipments.boxes.deliver');

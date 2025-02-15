@@ -135,19 +135,7 @@
                 </div>
             </div>
 
-            <div class="mb-3 row">
-                <div class="mb-3 col-sm-6 col-md-6 col-lg-6">
-                    <label for="box_delivery_date" class="form-label">@lang('Box Delivery Date')</label>
-                    <input type="date" name="box_delivery_date"
-                        class="form-control @error('box_delivery_date') is-invalid @enderror" id="box_delivery_date"
-                        value="{{ old('box_delivery_date') }}">
-                    @error('box_delivery_date')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-            </div>
+            
 
             <div class="mb-3">
                 <x-save-btn>
