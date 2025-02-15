@@ -296,4 +296,24 @@ class ShipmentBoxController extends Controller
     }
 
 
+    public function deliverBox(Request $request, $shipmentId, $boxId)
+{
+    // Validate the shipment and box existence
+    $box = ShipmentBox::where('shipment_id', $shipmentId)
+                      ->where('id', $boxId)
+                      ->firstOrFail();
+
+    // Update the box status to 'delivered' and set the delivery date
+    $box->update([
+        'status' => 'delivered',
+        'box_delivery_date' => now()
+    ]);
+
+    return response()->json([
+        'message' => __('Box has been marked as delivered successfully!')
+    ], 200);
+}
+
+
+
 }

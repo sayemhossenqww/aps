@@ -255,6 +255,8 @@ Route::group(['middleware' => ['auth']], function () {
     // Route::post('/shipments/{shipment}/boxes/deliver', [ShipmentBoxController::class, 'bulkDeliver'])
     //     ->name('shipments.boxes.deliver');
     Route::post('/shipments/boxes/deliver', [ShipmentBoxController::class, 'deliverBoxes'])->name('shipments.boxes.deliver');
+    Route::post('/shipments/{shipmentId}/boxes/{boxId}/deliver', [ShipmentBoxController::class, 'deliverBox'])
+    ->name('shipments.boxes.deliver');
 
 
 });
