@@ -1,0 +1,81 @@
+/*receipt.document.write('<div style="margin: 1.5rem">');
+        order.order_details.map((detail: any) => {
+            if (receipt) {
+                receipt.document.write(`<div>`);
+                receipt.document.write(`<div>${detail.product.name}</div>`);
+                receipt.document.write(`<div style="display: flex">`);
+                receipt.document.write(`<div>${detail.quantity}* ${detail.view_price}</div>`);
+                receipt.document.write(`<div style="${settings.margin}: auto">${detail.view_total}</div>`);
+                receipt.document.write('</div>');
+                receipt.document.write('</div>');
+            }
+        });
+        receipt.document.write('</div>');
+
+        if (order.discount > 0) {
+            receipt.document.write('<div style="display: flex;margin: 1.5rem">');
+            receipt.document.write(`<div>${t('Discount', 'الخصم')}</div>`);
+            receipt.document.write(`<div style="${settings.margin}: auto">${order.discount_view}</div>`);
+            receipt.document.write('</div>');
+        }
+        if (this.getAppSettings().enableTakeoutAndDelivery) {
+            if (this.isOrderDelivery()) {
+                if (order.delivery_charge > 0) {
+                    receipt.document.write('<div style="display: flex;margin: 1.5rem">');
+                    receipt.document.write(`<div>${t('Delivery Charge', 'رسوم التوصيل')}:</div>`);
+                    receipt.document.write(`<div style="${settings.margin}: auto">${order.delivery_charge_view}</div>`);
+                    receipt.document.write('</div>');
+                }
+            }
+        } else {
+            if (order.delivery_charge > 0) {
+                receipt.document.write('<div style="display: flex;margin: 1.5rem">');
+                receipt.document.write(`<div>${t('Delivery Charge', 'رسوم التوصيل')}:</div>`);
+                receipt.document.write(`<div style="${settings.margin}: auto">${order.delivery_charge_view}</div>`);
+                receipt.document.write('</div>');
+            }
+        }
+
+        if (order.tax_rate > 0) {
+            if (order.vat_type == 'add') {
+                receipt.document.write('<div style="display: flex;margin: 1.5rem">');
+                receipt.document.write(`<div>${t('VAT', 'الضريبة')} (${order.tax_rate}%):</div>`);
+                receipt.document.write(`<div style="${settings.margin}: auto">${order.total_tax_view}</div>`);
+                receipt.document.write('</div>');
+            } else {
+                receipt.document.write('<div style="display: flex;margin: 1.5rem">');
+                receipt.document.write(`<div>${t('Subtotal', 'المجموع')}</div>`);
+                receipt.document.write(`<div style="${settings.margin}: auto">${order.subtotal_view}</div>`);
+                receipt.document.write('</div>');
+                receipt.document.write('<div style="display: flex;margin: 1.5rem">');
+                receipt.document.write(`<div>${t('TAX.AMOUNT', 'قيمة الضريبة')}</div>`);
+                receipt.document.write(`<div style="${settings.margin}: auto">${order.tax_amount_view}</div>`);
+                receipt.document.write('</div>');
+                receipt.document.write('<div style="display: flex;margin: 1.5rem">');
+                receipt.document.write(`<div>${t('VAT', 'الضريبة')} ${order.tax_rate}%:</div>`);
+                receipt.document.write(`<div style="${settings.margin}: auto">${order.vat_view}</div>`);
+                receipt.document.write('</div>');
+            }
+        }
+        receipt.document.write('<div style="font-weight: 700;margin: 1.5rem">');
+        receipt.document.write(`<div>${t('Total', 'المجموع')}</div>`);
+        receipt.document.write(`<div style="display: flex;">`);
+        receipt.document.write(`<div style="${settings.margin}: auto">${order.total_view}</div>`);
+        receipt.document.write('</div>');
+        receipt.document.write(`<div style="display: flex;">`);
+        receipt.document.write(`<div style="${settings.margin}: auto">${order.receipt_exchange_rate}</div>`);
+        receipt.document.write('</div>');
+        receipt.document.write('</div>');
+
+        receipt.document.write('<div style="text-align: center !important;margin-bottom: 0.5rem !important;">');
+        receipt.document.write(`<span style="margin-right: 1rem">${order.date_view.toDateString()}</span> <span>${order.time_view}</span>`);
+        receipt.document.write('</div>');
+        receipt.document.write(`<div style="text-align: center !important;margin-bottom: 0.5rem !important;">${order.number}</div>`);
+
+        receipt.document.write(`<div style="display: flex;align-items: center !important;justify-content: center">${barcode}</div>`);
+
+        if (settings.storeAdditionalInfo) {
+            receipt.document.write(
+                `<div style="font-size: 0.875em;text-align: center !important;margin-bottom: 0.5rem !important;">${settings.storeAdditionalInfo}</div>`
+            );
+        }*/
